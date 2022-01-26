@@ -1,18 +1,13 @@
-function snap(h,showFile)
+function snap(h,uniqName)
 % set defaults
-if ~exist('h','var')
-    h = gcf;
-end
-if ~exist('showFile','var')
-    showFile = 1;
-end
+showFile = 1;
 
 % set paths
 snapPath = fileparts(mfilename('fullpath'));
 runFile = matlab.desktop.editor.getActiveFilename;
 [~,runName] = fileparts(runFile);
 curDate = datestr(now,'yyyymmddHHMMSS');
-snapBaseName = strjoin({curDate,runName},'_');
+snapBaseName = strjoin({curDate,uniqName,runName},'-');
 
 % make dirs if needed
 figsDir = fullfile(snapPath,'figs');
